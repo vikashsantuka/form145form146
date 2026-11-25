@@ -1,0 +1,38 @@
+# Only used if hosting on Netlify. Add every alias domain to the Netlify site, then these force a 301 to the main domain.
+[build]
+  publish = "."
+[[redirects]]
+  from = "https://www.form145form146.com/*"
+  to = "https://form145form146.com/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://form145.com/*"
+  to = "https://form145form146.com/form-145"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.form145.com/*"
+  to = "https://form145form146.com/form-145"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://form146.com/*"
+  to = "https://form145form146.com/form-146"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.form146.com/*"
+  to = "https://form145form146.com/form-146"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://form15caform15cb.com/*"
+  to = "https://form145form146.com/15ca-15cb"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.form15caform15cb.com/*"
+  to = "https://form145form146.com/15ca-15cb"
+  status = 301
+  force = true

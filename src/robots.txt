@@ -1,0 +1,21 @@
+# Search engines and AI assistants are welcome: we want NRIs to find accurate Form 145/146 answers.
+User-agent: *
+Allow: /
+Disallow: /crm/
+
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: {{DOMAIN}}/sitemap.xml

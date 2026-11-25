@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>NRIF Lead Desk</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<style>
+/* Layout concept: an operator's console. Pipeline counts on top, a dense lead table, a detail drawer on the right. */
+:root { --ink:#0f2440; --muted:#5d6c82; --paper:#f3f6fa; --surface:#fff; --line:#dbe2ec; --brand:#12355f; --accent:#d9731a; --ok:#1f7a4d; --tint:#eaf0f8; --bad:#b4372b;
+  --font:"Inter",system-ui,sans-serif; --display:"Plus Jakarta Sans",system-ui,sans-serif; }
+@media (prefers-color-scheme: dark) { :root { --ink:#e7edf6; --muted:#9aa8bc; --paper:#0c1522; --surface:#121e2f; --line:#24344b; --brand:#8fb7ea; --accent:#f0943f; --ok:#5cc48f; --tint:#16263b; --bad:#ef7b6e; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin:0; font:14px/1.5 var(--font); background:var(--paper); color:var(--ink); }
+header { display:flex; gap:12px; align-items:center; padding:12px max(16px, env(safe-area-inset-left,0px)); background:var(--surface); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; flex-wrap:wrap; }
+header h1 { font:800 1.05rem var(--display); margin:0; }
+header .sp { flex:1; }
+button, .btn { font:inherit; font-weight:600; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink); padding:8px 12px; cursor:pointer; text-decoration:none; display:inline-block; }
+button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+input, select, textarea { font:inherit; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:8px 10px; width:100%; }
+textarea { min-height:90px; }
+label { display:block; font-size:12px; font-weight:600; color:var(--muted); margin:10px 0 4px; }
+main { padding:16px max(16px, env(safe-area-inset-left,0px)); }
+.login { max-width:380px; margin:10vh auto; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:24px; }
+.pipe { display:grid; grid-template-columns:repeat(8, minmax(0,1fr)); gap:8px; margin-bottom:14px; }
+@media (max-width:900px) { .pipe { grid-template-columns:repeat(4, minmax(0,1fr)); } }
+.pipe button { text-align:left; padding:10px; }
+.pipe button b { display:block; font:800 1.4rem var(--display); font-variant-numeric:tabular-nums; }
+.pipe button.on { border-color:var(--accent); box-shadow:0 0 0 2px var(--accent) inset; }
+.tools { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.tools input { max-width:280px; }
+.tools select { max-width:200px; }
+.tablewrap { overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:10px; }
+table { width:100%; border-collapse:collapse; }
+th, td { padding:9px 10px; border-bottom:1px solid var(--line); text-align:left; white-space:nowrap; }
+th { font-size:12px; color:var(--muted); background:var(--tint); position:sticky; top:0; }
+tr.row { cursor:pointer; } tr.row:hover td { background:var(--tint); }
+.chip { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600; background:var(--tint); }
+.chip.new { background:#fde8d4; color:#8a3d00; } .chip.won { background:#d7f0e2; color:#145233; } .chip.lost { background:#f6dcd9; color:#7a2218; }
+.due { color:var(--bad); font-weight:600; }
+aside { position:fixed; top:0; right:0; bottom:0; width:min(460px,100%); background:var(--surface); border-left:1px solid var(--line); padding:18px max(18px, env(safe-area-inset-right,0px)) 18px 18px; overflow-y:auto; z-index:10; box-shadow:-20px 0 40px -30px rgba(0,0,0,.5); }
+aside h2 { font:800 1.2rem var(--display); margin:0 0 4px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:0 10px; }
+.kv { font-size:13px; color:var(--muted); }
+.kv b { color:var(--ink); font-weight:500; }
+.row-actions { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+.msg { margin-top:10px; font-size:13px; }
+.empty { padding:40px; text-align:center; color:var(--muted); }
+</style>
+</head>
+<body>
+<header><h1>NRIF Lead Desk</h1><span class="kv">Form145Form146.com</span><span class="sp"></span><span id="who" class="kv"></span><button id="add" hidden>+ Add lead</button><button id="csv" hidden>Export CSV</button><button id="out" hidden>Sign out</button></header>
+<main>
+  <section id="login" class="login">
+    <h2 style="margin-top:0;font-family:var(--display)">Sign in</h2>
+    <p class="kv">Team members only. Use the email you were added with.</p>
+    <label for="em">Email</label><input id="em" type="email" autocomplete="email">
+    <label for="pw">Password (leave blank to get a sign-in link by email)</label><input id="pw" type="password" autocomplete="current-password">
+    <div class="row-actions"><button class="primary" id="go">Sign in</button></div>
+    <div id="lmsg" class="msg"></div>
+  </section>
+  <section id="app" hidden>
+    <div class="pipe" id="pipe"></div>
+    <div class="tools">
+      <input id="q" aria-label="Search leads" placeholder="Search name, phone, email, bank">
+      <select id="fType" aria-label="Lead type"><option value="">All lead types</option><option value="nri">NRI</option><option value="business">Business</option><option value="bank_partner">Bank partner</option><option value="other">Other</option></select>
+      <select id="fOwner" aria-label="Owner"><option value="">Any owner</option></select>
+      <label class="kv" style="margin:0;display:flex;gap:6px;align-items:center"><input type="checkbox" id="fDue" style="width:auto"> Follow-ups due</label>
+    </div>
+    <div class="tablewrap"><table><thead><tr><th>Created</th><th>Name</th><th>Stage</th><th>Purpose</th><th>Amount</th><th>Country</th><th>Bank</th><th>Phone</th><th>Owner</th><th>Follow-up</th><th>Source</th></tr></thead><tbody id="rows"></tbody></table><div id="empty" class="empty" hidden>No leads match. New website enquiries appear here automatically.</div></div>
+  </section>
+</main>
+<aside id="drawer" hidden></aside>
+<script src="/assets/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const STAGES = [
+  ["new","New"],["contacted","Contacted"],["docs_pending","Docs pending"],["docs_received","Docs received"],
+  ["certificate_issued","Form 146 issued"],["remittance_done","Remittance done"],["won","Paid / closed"],["lost","Lost"]];
+const PURPOSES = ["Property sale proceeds","Rental income","Inheritance","NRO balance / FD interest","Shares, mutual funds, dividends","Gift or family maintenance","Business payment to overseas vendor","Other"];
+const C = window.NRIF_CONFIG;
+const sb = supabase.createClient(C.supabaseUrl, C.supabaseKey);
+let leads = [], stageFilter = "", current = null;
+const $ = id => document.getElementById(id);
+const esc = s => (s ?? "").toString().replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const stageName = s => (STAGES.find(x => x[0] === s) || [s, s])[1];
+const today = () => new Date().toISOString().slice(0,10);
+
+$("go").onclick = async () => {
+  const email = $("em").value.trim(), password = $("pw").value;
+  $("lmsg").textContent = "Signing in…";
+  const r = password ? await sb.auth.signInWithPassword({ email, password })
+                     : await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: location.origin + "/crm/" } });
+  if (r.error) { $("lmsg").textContent = r.error.message; return; }
+  if (!password) { $("lmsg").textContent = "Check your inbox for the sign-in link."; return; }
+  boot();
+};
+$("out").onclick = async () => { await sb.auth.signOut(); location.reload(); };
+["q","fType","fOwner","fDue"].forEach(id => $(id).addEventListener("input", draw));
+
+async function boot() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return;
+  const { data, error } = await sb.from("nrif_leads").select("*").order("created_at", { ascending: false }).limit(2000);
+  if (error) { $("lmsg").textContent = "Signed in, but this account is not on the team list yet. Ask the admin to add " + session.user.email + "."; return; }
+  $("login").hidden = true; $("app").hidden = false; ["add","csv","out"].forEach(i => $(i).hidden = false);
+  $("who").textContent = session.user.email;
+  leads = data;
+  const owners = [...new Set(leads.map(l => l.owner).filter(Boolean))].sort();
+  $("fOwner").innerHTML = '<option value="">Any owner</option>' + owners.map(o => `<option>${esc(o)}</option>`).join("");
+  draw();
+}
+
+function filtered() {
+  const q = $("q").value.toLowerCase(), t = $("fType").value, o = $("fOwner").value, due = $("fDue").checked;
+  return leads.filter(l => (!stageFilter || l.stage === stageFilter) && (!t || l.lead_type === t) && (!o || l.owner === o)
+    && (!due || (l.next_follow_up && l.next_follow_up <= today() && !["won","lost"].includes(l.stage)))
+    && (!q || [l.name,l.phone,l.email,l.bank,l.country].join(" ").toLowerCase().includes(q)));
+}
+
+function draw() {
+  const counts = Object.fromEntries(STAGES.map(s => [s[0], 0]));
+  leads.forEach(l => counts[l.stage] = (counts[l.stage] || 0) + 1);
+  $("pipe").innerHTML = STAGES.map(([k,n]) => `<button class="${stageFilter===k?"on":""}" data-s="${k}">${n}<b>${counts[k]||0}</b></button>`).join("");
+  $("pipe").querySelectorAll("button").forEach(b => b.onclick = () => { stageFilter = stageFilter === b.dataset.s ? "" : b.dataset.s; draw(); });
+  const rows = filtered();
+  $("empty").hidden = rows.length > 0;
+  $("rows").innerHTML = rows.map(l => {
+    const due = l.next_follow_up && l.next_follow_up <= today() && !["won","lost"].includes(l.stage);
+    const cls = l.stage === "new" ? "new" : l.stage === "won" ? "won" : l.stage === "lost" ? "lost" : "";
+    return `<tr class="row" data-id="${l.id}"><td>${new Date(l.created_at).toLocaleDateString("en-IN",{day:"2-digit",month:"short"})}</td><td><b>${esc(l.name)}</b></td><td><span class="chip ${cls}">${stageName(l.stage)}</span></td><td>${esc(l.purpose)}</td><td>${esc(l.amount_band)}</td><td>${esc(l.country)}</td><td>${esc(l.bank)}</td><td>${esc(l.phone)}</td><td>${esc(l.owner)}</td><td class="${due?"due":""}">${esc(l.next_follow_up)}</td><td>${esc(l.utm_source || l.channel)}</td></tr>`;
+  }).join("");
+  $("rows").querySelectorAll("tr").forEach(tr => tr.onclick = () => open(leads.find(l => l.id === tr.dataset.id)));
+}
+
+function open(l) {
+  current = l || { stage: "new", lead_type: "nri", channel: "manual" };
+  const isNew = !l;
+  const wa = (current.phone || "").replace(/[^0-9]/g, "");
+  const d = $("drawer");
+  d.hidden = false;
+  d.innerHTML = `
+    <div style="display:flex;justify-content:space-between;gap:10px"><h2>${isNew ? "New lead" : esc(current.name)}</h2><button id="x">Close</button></div>
+    ${isNew ? "" : `<div class="kv">Created ${new Date(current.created_at).toLocaleString("en-IN")} · from <b>${esc(current.source_page||"")}</b>${current.utm_campaign?` · campaign <b>${esc(current.utm_campaign)}</b>`:""}</div>
+    <div class="row-actions">${wa?`<a class="btn" href="https://wa.me/${wa}?text=${encodeURIComponent("Hi " + (current.name||"").split(" ")[0] + ", this is NRI Foundation about your Form 145/146 request.")}" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="tel:${esc(current.phone)}">Call</a>`:""}${current.email?`<a class="btn" href="mailto:${esc(current.email)}">Email</a>`:""}</div>`}
+    <div class="grid2">
+      <div><label>Name</label><input id="d_name" value="${esc(current.name)}"></div>
+      <div><label>Phone</label><input id="d_phone" value="${esc(current.phone)}"></div>
+      <div><label>Email</label><input id="d_email" value="${esc(current.email)}"></div>
+      <div><label>Country</label><input id="d_country" value="${esc(current.country)}"></div>
+      <div><label>Purpose</label><select id="d_purpose"><option></option>${PURPOSES.map(p=>`<option ${p===current.purpose?"selected":""}>${p}</option>`).join("")}</select></div>
+      <div><label>Amount</label><input id="d_amount_band" value="${esc(current.amount_band)}"></div>
+      <div><label>Bank</label><input id="d_bank" value="${esc(current.bank)}"></div>
+      <div><label>Lead type</label><select id="d_lead_type">${["nri","business","bank_partner","other"].map(t=>`<option ${t===current.lead_type?"selected":""}>${t}</option>`).join("")}</select></div>
+      <div><label>Stage</label><select id="d_stage">${STAGES.map(([k,n])=>`<option value="${k}" ${k===current.stage?"selected":""}>${n}</option>`).join("")}</select></div>
+      <div><label>Owner</label><input id="d_owner" value="${esc(current.owner)}" placeholder="e.g. Priya"></div>
+      <div><label>Next follow-up</label><input id="d_next_follow_up" type="date" value="${esc(current.next_follow_up)}"></div>
+      <div><label>Channel</label><select id="d_channel">${["direct","bank","referral","social","manual"].map(t=>`<option ${t===current.channel?"selected":""}>${t}</option>`).join("")}</select></div>
+      <div><label>Fee quoted (₹)</label><input id="d_fee_quoted" type="number" value="${esc(current.fee_quoted)}"></div>
+      <div><label>Remittance amount (₹)</label><input id="d_remittance_amount_inr" type="number" value="${esc(current.remittance_amount_inr)}"></div>
+    </div>
+    <label>Customer message</label><div class="kv" style="white-space:pre-wrap">${esc(current.message) || "—"}</div>
+    <label>Notes (add a line, it is time-stamped)</label><textarea id="d_note" placeholder="Called, asked for sale deed and TDS certificate…"></textarea>
+    <div class="kv" style="white-space:pre-wrap;margin-top:6px">${esc(current.notes)}</div>
+    <div class="row-actions"><button class="primary" id="save">${isNew ? "Add lead" : "Save"}</button></div>
+    <div class="msg" id="dmsg"></div>`;
+  $("x").onclick = () => d.hidden = true;
+  $("save").onclick = save;
+}
+
+async function save() {
+  const f = k => { const v = $("d_" + k).value.trim(); return v === "" ? null : v; };
+  const row = {};
+  ["name","phone","email","country","purpose","amount_band","bank","lead_type","stage","owner","next_follow_up","channel","fee_quoted","remittance_amount_inr"].forEach(k => row[k] = f(k));
+  if (!row.name) { $("dmsg").textContent = "Name is required."; return; }
+  const note = $("d_note").value.trim();
+  if (note) row.notes = `[${new Date().toLocaleString("en-IN")} · ${$("who").textContent}] ${note}` + (current.notes ? "\n" + current.notes : "");
+  $("dmsg").textContent = "Saving…";
+  const r = current.id ? await sb.from("nrif_leads").update(row).eq("id", current.id).select().single()
+                       : await sb.from("nrif_leads").insert(row).select().single();
+  if (r.error) { $("dmsg").textContent = r.error.message; return; }
+  const i = leads.findIndex(l => l.id === r.data.id);
+  if (i >= 0) leads[i] = r.data; else leads.unshift(r.data);
+  $("drawer").hidden = true; draw();
+}
+
+$("add").onclick = () => open(null);
+$("csv").onclick = () => {
+  const cols = ["created_at","name","phone","email","country","purpose","amount_band","bank","lead_type","stage","owner","next_follow_up","channel","fee_quoted","remittance_amount_inr","source_page","utm_source","utm_medium","utm_campaign","message","notes"];
+  const q = v => '"' + (v ?? "").toString().replace(/"/g, '""') + '"';
+  const csv = [cols.join(",")].concat(filtered().map(l => cols.map(c => q(l[c])).join(","))).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+  a.download = "nrif-leads-" + today() + ".csv"; a.click();
+};
+sb.auth.onAuthStateChange((e) => { if (e === "SIGNED_IN") boot(); });
+boot();
+</script>
+</body>
+</html>
