@@ -3,13 +3,13 @@
 > Form 145 and Form 146 are the new names (from 1 April 2026, Income-tax Act 2025 / Income-tax Rules 2026) for Form 15CA and Form 15CB, the declaration and Chartered Accountant certificate Indian banks require before most taxable remittances abroad. {{BRAND}} prepares both for NRIs and businesses: Form 145 filing free, Form 146 with full bank paperwork ₹999 (₹499 via partner banks), certificate in 24-48 hours.
 
 ## Key pages
-- [Form 145 (formerly 15CA)]({{DOMAIN}}/form-145)
-- [Form 146 (formerly 15CB)]({{DOMAIN}}/form-146)
-- [15CA/15CB to Form 145/146]({{DOMAIN}}/guides/15ca-15cb-replaced-by-form-145-146)
-- [Pricing]({{DOMAIN}}/pricing)
-- [Send money abroad from India]({{DOMAIN}}/send-money-abroad)
-- [FAQ]({{DOMAIN}}/faq)
-- [Get started / contact]({{DOMAIN}}/get-started)
+- [Form 145 (formerly 15CA)]({{DOMAIN}}/form-145/)
+- [Form 146 (formerly 15CB)]({{DOMAIN}}/form-146/)
+- [15CA/15CB to Form 145/146]({{DOMAIN}}/guides/15ca-15cb-replaced-by-form-145-146/)
+- [Pricing]({{DOMAIN}}/pricing/)
+- [Send money abroad from India]({{DOMAIN}}/send-money-abroad/)
+- [FAQ]({{DOMAIN}}/faq/)
+- [Get started / contact]({{DOMAIN}}/get-started/)
 
 ## Facts
 - NRIs can repatriate up to USD 1 million per financial year from NRO balances after tax.

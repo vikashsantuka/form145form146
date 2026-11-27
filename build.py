@@ -24,12 +24,26 @@ def wa_link(text="Hi, I need help with Form 145/146"):
     from urllib.parse import quote as _q
     return f"https://wa.me/{WHATSAPP}?text=" + _q(f"{WA_TAG} {text}", safe="")
 EMAIL = "info@form145form146.com"
-CITY = "Bengaluru, India"
+CITY = "Bengaluru, India"   # TODO(Vikash): confirm the office city
+
+# ---- Trust details (each line shows on the site, in the footer, About page and schema, as soon as it is filled) ----
+LEGAL_ENTITY = ""      # e.g. "NRI Foundation Advisory Pvt Ltd" or "NRI Foundation (LLP)"
+STREET_ADDRESS = ""    # e.g. "3rd Floor, 12 MG Road, Bengaluru 560001"
+POSTAL_CODE = ""
+GSTIN = ""
+CA_PARTNERS = []       # e.g. [("CA Rohit Bajoria", "FCA, ICAI membership no. 123456", "assets/team/rohit.jpg")]
+GOOGLE_REVIEWS_URL = ""  # Google Business Profile review link, once live
+GRIEVANCE_OFFICER = ""   # name of the person who handles privacy complaints (DPDP Act); email below is used until set
+
+# ---- Search engine verification (paste the content value only; DNS TXT verification in Cloudflare also works) ----
+GOOGLE_SITE_VERIFICATION = ""
+BING_SITE_VERIFICATION = ""
 REVIEWED = "November 2026"
 TODAY = date.today().isoformat()
 
 # ---- Prices (change here, rebuild) ----
 PRICE_STD, PRICE_COMPLEX, PRICE_BANK = "₹999", "₹1,499", "₹499"
+PRICE_TAX_NOTE = "incl. GST"  # confirmed by Vikash 27 Nov 2026
 
 # ---- "Why us" claims ----
 # "safe": wording we can stand behind today. "full": the original 15ca15cb.com claims (largest issuer, lowest fee in
@@ -75,21 +89,26 @@ def url(slug, current_slug=""):
         slug, anchor = slug.split("#", 1)
         anchor = "#" + anchor
     if not PREVIEW:
-        return ("/" + slug if slug else "/") + anchor
+        return ("/" + slug + "/" if slug else "/") + anchor
     depth = current_slug.count("/")
     prefix = "../" * depth
     target = (slug if slug else "index") + ".html"
     return prefix + target + anchor
 
 
+ASSET_VER = {}  # path -> short content hash, filled in main() so browsers fetch new CSS/JS after each deploy
+
+
 def asset(path, current_slug=""):
+    v = ASSET_VER.get(path)
+    q = f"?v={v}" if v else ""
     if not PREVIEW:
-        return "/" + path
-    return "../" * current_slug.count("/") + path
+        return "/" + path + q
+    return "../" * current_slug.count("/") + path + q
 
 
 def abs_url(slug):
-    return DOMAIN + ("/" + slug if slug else "/")
+    return DOMAIN + ("/" + slug + "/" if slug else "/")
 
 
 LOGO_SVG = """<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="8" fill="var(--brand)"/><path d="M10 9h10l4 4v12H10z" fill="none" stroke="var(--surface)" stroke-width="2"/><path d="M13 17h8M13 21h5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>"""
@@ -166,10 +185,8 @@ def render(p):
 <meta name="twitter:image" content="{DOMAIN}/assets/og/{og_name(slug)}.png">
 <meta name="theme-color" content="#12355f">
 <link rel="icon" href="{A('assets/favicon.svg')}" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
-<link rel="stylesheet" href="{A('assets/site.css')}">
+<link rel="preload" href="{A('assets/fonts/' + INTER_LATIN)}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{A('assets/site.css')}">{verification_meta()}
 {schema_html}"""
 
     header = f"""<a class="skip" href="#main">Skip to content</a>
@@ -200,9 +217,11 @@ def render(p):
 {head}
 </head>
 <body>
+<!--email_off-->
 {header}
 {main}
 {footer}
+<!--/email_off-->
 {scripts}
 </body>
 </html>
@@ -213,13 +232,13 @@ def footer_html(L, A):
     c = content
     col = lambda items: "".join(f'<li><a href="{L(s)}">{html.escape(n)}</a></li>' for n, s in items)  # noqa: E731
     services = [("Form 145 filing (free)", "form-145"), ("Form 146 CA certificate", "form-146"), ("15CA / 15CB", "15ca-15cb"),
-                ("Send money abroad", "send-money-abroad"), ("Pricing", "pricing"), ("How it works", "how-it-works")]
+                ("Send money abroad", "send-money-abroad"), ("Do I need Form 146?", "form-146-checker"), ("Pricing", "pricing"), ("How it works", "how-it-works")]
     cases = [(u["short"], "repatriate/" + u["slug"]) for u in c.USE_CASES]
     countries = [(f"Send money to {x['name']}", "send-money-from-india-to/" + x["slug"]) for x in c.COUNTRIES[:6]]
     quick = [("Talk to a CA", "talk-to-ca"), ("Request a callback", "talk-to-ca#callback"), ("Ask a question", "ask-a-question"), ("Download sample certificate", "downloads#sample"),
              ("Download RDF", "downloads#rdf"), ("Bank forms", "bank-forms"), ("Open NRE / NRO account", "open-nri-account"), ("Best rate in your bank", "bank-rate-assistance")]
     company = [("About " + BRAND, "about"), ("For banks", "bank-partners"), ("Guides", "guides"), ("FAQ", "faq"), ("Contact", "get-started"),
-               ("Privacy", "privacy"), ("Terms", "terms"), ("Disclaimer", "disclaimer")]
+               ("Privacy", "privacy"), ("Terms", "terms"), ("Refunds", "refund-policy"), ("Disclaimer", "disclaimer")]
     A_LOGO, A_LOGO2 = A("assets/nri-foundation-logo.png"), A("assets/nri-foundation-logo@2x.png")
     social_html = ('<p class="small">' + " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SOCIAL.items() if u) + "</p>") if any(SOCIAL.values()) else ""
     return f"""<footer class="site-footer">
@@ -229,7 +248,8 @@ def footer_html(L, A):
         <a class="logo" href="{L('')}">{LOGO_SVG}<span>{SITE_NAME}<small>by {BRAND}</small></span></a>
         <p style="margin:14px 0 0"><img class="nrif-logo" src="{A_LOGO}" srcset="{A_LOGO2} 2x" alt="{BRAND} logo" width="104" height="70" loading="lazy"></p>
         <p class="muted small" style="margin-top:12px">Form 145 and Form 146 (formerly Form 15CA and 15CB) plus bank paperwork for NRIs and businesses sending money out of India. By NRIs, for NRIs.</p>
-        <p class="small">Call or WhatsApp: <a href="tel:{PHONE_TEL}">{PHONE}</a><br>Email: <a href="mailto:{EMAIL}">{EMAIL}</a><br>{CITY}</p>
+        <p class="small">Call or WhatsApp: <a href="tel:{PHONE_TEL}">{PHONE}</a><br>Email: <!--email_off--><a href="mailto:{EMAIL}">{EMAIL}</a><!--/email_off--><br>{html.escape(", ".join(x for x in (STREET_ADDRESS, POSTAL_CODE) if x) or CITY)}</p>
+        {trust_lines()}
         {social_html}
       </div>
       <div><p class="foot-h">Services</p><ul>{col(services)}</ul></div>
@@ -237,9 +257,33 @@ def footer_html(L, A):
       <div><p class="foot-h">Quick links</p><ul>{col(quick)}</ul></div>
       <div><p class="foot-h">{BRAND}</p><ul>{col(company)}</ul></div>
     </div>
-    <p class="legal">© {date.today().year} {BRAND}. {SITE_NAME} is an initiative of {BRAND}. Certificates in Form 146 are issued by independent practising Chartered Accountants. We are not a bank and never hold or move your money; remittances are made by your own bank. Information on this site is general guidance, last reviewed {REVIEWED}, and not tax or legal advice for your specific case.</p>
+    <p class="legal">© {date.today().year} {html.escape(LEGAL_ENTITY or BRAND)}. {SITE_NAME} is an initiative of {BRAND}. Certificates in Form 146 are issued by independent practising Chartered Accountants. We are not a bank and never hold or move your money; remittances are made by your own bank. Information on this site is general guidance, last reviewed {REVIEWED}, and not tax or legal advice for your specific case.</p>
   </div>
 </footer>"""
+
+
+INTER_LATIN = next((f for f in sorted(os.listdir(os.path.join(os.path.dirname(__file__) or ".", "src/assets/fonts"))) if f.startswith("Inter-latin-") and "ext" not in f), "")
+
+
+def verification_meta():
+    out = ""
+    if GOOGLE_SITE_VERIFICATION:
+        out += f'\n<meta name="google-site-verification" content="{html.escape(GOOGLE_SITE_VERIFICATION, quote=True)}">'
+    if BING_SITE_VERIFICATION:
+        out += f'\n<meta name="msvalidate.01" content="{html.escape(BING_SITE_VERIFICATION, quote=True)}">'
+    return out
+
+
+def trust_lines():
+    bits = []
+    if LEGAL_ENTITY:
+        bits.append(html.escape(LEGAL_ENTITY))
+    bits += [f"{html.escape(k.split(' (')[0])}: {html.escape(v)}" for k, v in REGISTRATIONS.items() if v]
+    if GSTIN:
+        bits.append("GSTIN: " + html.escape(GSTIN))
+    if GOOGLE_REVIEWS_URL:
+        bits.append(f'<a href="{html.escape(GOOGLE_REVIEWS_URL, quote=True)}" target="_blank" rel="noopener">Our Google reviews</a>')
+    return ('<p class="small muted">' + "<br>".join(bits) + "</p>") if bits else ""
 
 
 def og_name(slug):
@@ -263,7 +307,8 @@ def org_schema():
         "name": BRAND, "alternateName": [SITE_NAME, "Form 145 Form 146", "15CA 15CB"],
         "url": DOMAIN + "/", "logo": DOMAIN + "/assets/nri-foundation-logo@2x.png", "image": DOMAIN + "/assets/og.png",
         "telephone": PHONE_TEL, "email": EMAIL,
-        "address": {"@type": "PostalAddress", "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN"},
+        "address": {k: v for k, v in {"@type": "PostalAddress", "streetAddress": STREET_ADDRESS, "postalCode": POSTAL_CODE, "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN"}.items() if v},
+        **({"legalName": LEGAL_ENTITY} if LEGAL_ENTITY else {}),
         "areaServed": ["IN", "US", "GB", "CA", "AU", "AE", "SG", "DE", "NZ"],
         "priceRange": "₹0 – ₹1,499",
         "sameAs": [v for v in SOCIAL.values() if v],
@@ -291,7 +336,8 @@ def service_schema(name, desc, price=None, slug=""):
 
 def article_schema(p):
     return {"@context": "https://schema.org", "@type": "Article", "headline": p["h1"], "description": p["desc"],
-            "datePublished": p.get("date", "2026-11-25"), "dateModified": TODAY, "author": {"@type": "Organization", "name": BRAND + " CA desk"},
+            "datePublished": p.get("date", "2026-11-25"), "dateModified": TODAY, "author": ({"@type": "Person", "name": CA_PARTNERS[0][0], "jobTitle": CA_PARTNERS[0][1]} if CA_PARTNERS else {"@type": "Organization", "name": BRAND + " CA desk", "url": DOMAIN + "/about/"}),
+            "reviewedBy": {"@type": "Organization", "name": BRAND + " CA desk"}, "lastReviewed": TODAY,
             "publisher": {"@id": DOMAIN + "/#org"}, "mainEntityOfPage": abs_url(p["slug"]), "image": DOMAIN + "/assets/og.png", "inLanguage": "en-IN"}
 
 
@@ -314,6 +360,11 @@ def main():
     with open(os.path.join(OUT, "assets", "config.js"), "a", encoding="utf-8") as f:
         f.write("window.NRIF_CONFIG.bankForms = " + json.dumps(bank_forms) + ";\n")
         f.write("window.NRIF_CONFIG.ga4 = " + json.dumps(GA4_ID) + "; window.NRIF_CONFIG.metaPixel = " + json.dumps(META_PIXEL_ID) + ";\n")
+        f.write("window.NRIF_CONFIG.consent = " + json.dumps(bool(GA4_ID or META_PIXEL_ID)) + ";\n")
+    import hashlib
+    for rel in ("assets/site.css", "assets/app.js", "assets/config.js"):
+        with open(os.path.join(OUT, rel), "rb") as fh:
+            ASSET_VER[rel] = hashlib.sha1(fh.read()).hexdigest()[:10]
     content.register(sys.modules[__name__])
     for p in PAGES:
         slug = p["slug"]
@@ -339,6 +390,11 @@ def main():
                     write(name, f.read().replace("{{DOMAIN}}", DOMAIN).replace("{{BRAND}}", BRAND))
         if os.path.isdir("src/crm"):
             shutil.copytree("src/crm", os.path.join(OUT, "crm"))
+            crm = os.path.join(OUT, "crm", "index.html")
+            with open(crm, encoding="utf-8") as fh:
+                t = fh.read().replace('/assets/config.js"', '/assets/config.js?v=' + ASSET_VER["assets/config.js"] + '"')
+            with open(crm, "w", encoding="utf-8") as fh:
+                fh.write(t)
     print(f"Built {len(PAGES)} pages into {OUT}/")
 
 

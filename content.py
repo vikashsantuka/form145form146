@@ -72,7 +72,7 @@ FAQS = [
     ("What are Form 145 and Form 146?", "They are the new names for Form 15CA and Form 15CB. Form 145 is the online declaration you file on the income tax portal before money is sent abroad. Form 146 is the certificate from a practising Chartered Accountant that confirms the nature of the payment, the tax due and the TDS rate. They replaced 15CA and 15CB from 1 April 2026 under the Income-tax Act, 2025 and the Income-tax Rules, 2026."),
     ("Is Form 145 the same as Form 15CA?", "Yes, in purpose. Form 145 does the job Form 15CA used to do, and Form 146 does the job of Form 15CB. Banks now ask for the new forms, but many people and even some bank staff still say 15CA/15CB."),
     ("When do I need Form 146 (the CA certificate)?", "When the money you are sending is taxable in India and the amount is above the threshold (₹5 lakh in a financial year under the old rules, which the new rules broadly carried forward), the bank will ask for Form 146 alongside Form 145. Property sale proceeds, rent, NRO interest and business payments abroad commonly need it. We confirm this free for your case."),
-    ("How much does it cost?", "Form 145 filing is free. A Form 146 CA certificate with complete bank paperwork costs ₹999 for standard cases (rent, NRO interest, savings, dividends, gifts) and ₹1,499 for property sale, inheritance and business payments, which include a capital gains or tax computation. Customers referred by a partner bank pay ₹499. Courier, notarisation and apostille are charged at actual cost and agreed upfront."),
+    ("How much does it cost?", "Form 145 filing is free. A Form 146 CA certificate with complete bank paperwork costs ₹999 for standard cases (rent, NRO interest, savings, dividends, gifts) and ₹1,499 for property sale, inheritance and business payments, which include a capital gains or tax computation. Customers referred by a partner bank pay ₹499. All prices include GST. Courier, notarisation and apostille are charged at actual cost and agreed upfront."),
     ("How fast will I get my certificate?", "Usually within 24 to 48 working hours after we have your complete documents. Simple NRO interest or rent cases are often done the same day."),
     ("Do I need to visit India or my bank branch?", "No. The work is done online and over WhatsApp. Most banks accept the remittance request through internet banking, email from your registered address or your relationship manager. Where a bank insists on originals, we arrange pick-up or courier."),
     ("Which banks do you work with?", "All of them. The forms are the same for every bank. We regularly prepare paperwork for Axis, HDFC, ICICI, SBI, Kotak, IDFC FIRST, Bank of Baroda, Bank of India, Yes Bank, DBS, HSBC and Standard Chartered, and we keep their current remittance forms ready."),
@@ -213,7 +213,149 @@ GUIDES = [
 ]
 
 
-GUIDE_SEO = {'15ca-15cb-replaced-by-form-145-146': '15CA & 15CB are now Form 145 & 146: what changed (2026)', 'how-nris-repatriate-money-from-india': 'How NRIs repatriate money from India (2026 guide)', 'nri-property-sale-repatriation': 'NRI property sale: repatriate sale proceeds from India', 'repatriate-inheritance-nri': 'Inherited money for NRIs: tax and repatriation', 'why-banks-reject-remittances': 'Why banks reject remittances: 7 Form 145/146 mistakes'}
+NEW_GUIDES = [
+    dict(slug="nro-to-nre-transfer", h1="NRO to NRE transfer: rules, limits, documents and Form 145/146",
+         desc="How to move money from your NRO account to your NRE account in 2026: the USD 1 million limit, tax, Form 145/146, bank-by-bank process and common mistakes.",
+         read="8 min", body="""
+<p>An NRO to NRE transfer is the most common way NRIs make Indian money freely usable abroad. Once money is in your NRE account it can be sent overseas at any time without further paperwork, and the interest it earns is tax-free in India. Getting it there takes one round of tax paperwork.</p>
+<h2>The rules in one table</h2>
+<div class="table-wrap"><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody>
+<tr><td>Is NRO to NRE transfer allowed?</td><td>Yes, for NRIs and OCI holders, under the RBI's NRO repatriation facility.</td></tr>
+<tr><td>How much per year?</td><td>Up to <b>USD 1 million per financial year</b> (April to March), counting all NRO-to-NRE and NRO-to-abroad transfers across all your banks together.</td></tr>
+<tr><td>Is tax payable?</td><td>Not on the transfer itself. The money in NRO must already have suffered tax: TDS on interest and rent, capital gains tax on sale proceeds.</td></tr>
+<tr><td>Which forms?</td><td>Form 145 (formerly 15CA) and, for taxable amounts above the threshold, Form 146 (formerly 15CB) from a CA, plus your bank's request letter and Form A2 if it asks for one.</td></tr>
+<tr><td>Can I move NRE money back to NRO?</td><td>Yes, freely, but it then becomes NRO money and the limit applies when you move it out again.</td></tr>
+</tbody></table></div>
+<h2>Step by step</h2>
+<ol>
+<li><b>Check what the NRO balance is made of.</b> Interest, rent, pension, sale proceeds, inheritance. Each has a different tax position and different proof.</li>
+<li><b>Make sure the tax is settled.</b> Compare the TDS shown in your Form 26AS / AIS with the tax actually due. If TDS was short, pay the balance. If it was too high, you can claim it back in your Indian return.</li>
+<li><b>Get Form 146 from a Chartered Accountant.</b> The CA certifies the nature of the money and that tax has been paid or deducted, with a UDIN.</li>
+<li><b>File Form 145</b> on the income tax portal from your PAN login, quoting the Form 146 acknowledgement.</li>
+<li><b>Submit to the bank.</b> Most banks accept an NRO to NRE request through internet banking, secure mail or your relationship manager, with the two forms attached.</li>
+<li><b>Bank moves the money</b>, usually within one to three working days.</li>
+</ol>
+<h2>Documents checklist</h2>
+<ul><li>PAN, passport or OCI card</li><li>NRO account statement for the period</li><li>Interest certificates and TDS certificates (Form 16A or the new equivalent)</li><li>Source documents for large credits: sale deed, will or succession certificate, rent agreement</li><li>Tax Residency Certificate and Form 10F if a lower DTAA rate was applied</li></ul>
+<h2>Bank notes</h2>
+<p>Several banks, including HDFC, ICICI and IDFC FIRST, offer an online NRO to NRE request for current income such as interest, with a self-declaration. For larger or capital amounts, every bank asks for Form 145 and Form 146. Your bank's checklist is on its <a href="{banks}">bank page</a>.</p>
+<h2>Mistakes that hold up a transfer</h2>
+<ul><li>Crossing USD 1 million across two banks in the same financial year.</li><li>No source document for a large credit in the NRO account.</li><li>A DTAA rate on Form 146 without a valid Tax Residency Certificate.</li><li>Depositing Indian income directly into NRE instead of NRO in the first place.</li></ul>
+<p>We prepare the whole NRO to NRE pack: Form 146 from ₹999 incl. GST, Form 145 free. <a href="{get-started}">Start with a free check</a>.</p>
+"""),
+    dict(slug="how-to-file-form-145-online", h1="How to file Form 145 (formerly 15CA) online: step by step",
+         desc="A step-by-step guide to filing Form 145 on the income tax e-filing portal in 2026: which part to choose, linking the CA's Form 146, and fixing common errors.",
+         read="9 min", body="""
+<p>Form 145 is filed by the person sending the money, from their own PAN login on the income tax e-filing portal. It takes about 15 minutes once you have the details. The hard part is choosing the right part and making the numbers match Form 146 and your bank form exactly.</p>
+<div class="note">Menu names on the e-filing portal change from time to time. The steps below describe the 2026 flow; if a label looks different, the order of steps is still the same. Prefer not to do it yourself? <a href="{get-started}">We file it with you free.</a></div>
+<h2>Before you start</h2>
+<ul><li>Your PAN and e-filing password (NRIs without a portal account can register with PAN and an overseas mobile number)</li><li>Recipient's name, address and country; their bank name and country</li><li>Amount in foreign currency and in rupees, proposed date of remittance</li><li>Nature and purpose of the payment, and the RBI purpose code</li><li>If a CA certificate is needed: the Form 146 acknowledgement number</li></ul>
+<h2>Step 1: decide which part applies</h2>
+<div class="table-wrap"><table><thead><tr><th>Your case</th><th>Part to choose</th></tr></thead><tbody>
+<tr><td>Taxable, total remittances in the year within ₹5 lakh</td><td>The small-amount part (old Part A). No CA certificate.</td></tr>
+<tr><td>Taxable, and you hold a lower or nil deduction certificate from the tax officer</td><td>The part that quotes the officer's certificate (old Part B).</td></tr>
+<tr><td>Taxable, above ₹5 lakh</td><td>The part based on the CA's Form 146 (old Part C). Most NRO repatriations.</td></tr>
+<tr><td>Not taxable in India</td><td>The non-taxable declaration (old Part D), if your bank asks for one.</td></tr>
+</tbody></table></div>
+<h2>Step 2: if Form 146 is needed, add your CA first</h2>
+<ol><li>Log in and open the section for authorised partners (often called "My CA").</li><li>Add the CA using their membership number and assign them Form 146.</li><li>The CA prepares and uploads Form 146 from their own login. You receive an email when it is submitted.</li><li>Accept the Form 146 from your worklist if the portal asks you to. Note its acknowledgement number.</li></ol>
+<h2>Step 3: file Form 145</h2>
+<ol><li>Go to e-File, then Income Tax Forms, then File Income Tax Forms.</li><li>Choose Form 145. Select the part from Step 1.</li><li>Fill remitter, recipient and remittance details. For the Form 146 part, enter the acknowledgement number; most details then fill in from the certificate.</li><li>Check that amount, currency, recipient and purpose match Form 146 and your bank's Form A2 exactly.</li><li>Submit and e-verify (Aadhaar OTP, net banking, or a digital signature). NRIs without Aadhaar usually use a DSC or the EVC options available to them.</li><li>Download the acknowledgement PDF. That is what your bank needs.</li></ol>
+<h2>Errors we see every week</h2>
+<ul><li>Wrong part chosen. The portal won't let you switch after submission; you file again.</li><li>Rupee amount on Form 145 differs from Form 146 by a few rupees because of a different exchange rate.</li><li>Beneficiary name spelt differently from the bank form.</li><li>Form 145 filed before the CA's Form 146 was accepted, so the acknowledgement can't be linked.</li></ul>
+<h2>Can it be withdrawn?</h2>
+<p>Yes. The portal allows withdrawal of a filed form within a limited window if the remittance has not been made. After that, file a fresh one.</p>
+<p>We prepare Form 145 with you on a short screen-share or WhatsApp call, free, matched to the Form 146 we issue. <a href="{get-started}">Book it here</a>.</p>
+"""),
+    dict(slug="15ca-15cb-charges", h1="15CA 15CB charges in 2026: what Form 145 and 146 should cost",
+         desc="What CAs and online services charge for Form 15CA/15CB (now Form 145/146) in 2026, what is included, hidden extras to watch for, and our all-in price.",
+         read="5 min", body="""
+<p>There is no official fee for Form 145 or Form 146. The government charges nothing to file Form 145, and a CA sets their own fee for Form 146. That is why quotes range from a few hundred rupees to over ₹10,000 for the same certificate.</p>
+<h2>Typical prices in November 2026</h2>
+<div class="table-wrap"><table class="compare"><thead><tr><th>Provider type</th><th>Typical fee</th><th>Usually included</th></tr></thead><tbody>
+<tr><td>Local CA, walk-in</td><td>₹1,500 to ₹10,000+</td><td>Form 146 only; Form 145 sometimes extra</td></tr>
+<tr><td>Online CA platforms</td><td>₹2,999 to ₹5,000 + GST</td><td>Form 146 and Form 145; bank forms often not</td></tr>
+<tr><td>Bank-tied CAs</td><td>₹2,000 to ₹6,000</td><td>Form 146; you deal with the bank yourself</td></tr>
+<tr><td><b>{brand}</b></td><td><b>Form 145 free. Form 146 ₹999 incl. GST (₹1,499 for property, inheritance, capital gains)</b></td><td>Form 146, Form 145, Form A2, bank request letter, checklist, free corrections</td></tr>
+</tbody></table></div>
+<p class="muted small">Market ranges are from published price pages we checked in November 2026 and quotes reported to us by clients. They change often.</p>
+<h2>What should be included</h2>
+<ul><li>Form 146 with a valid UDIN</li><li>Form 145 filed (or prepared with you) and matched to Form 146</li><li>Tax computation where capital gains or DTAA are involved</li><li>Form A2 with the correct purpose code and your bank's request letter</li><li>Free corrections if the bank raises a query on the certificate</li></ul>
+<h2>Extras to ask about before you pay</h2>
+<ul><li>"Per certificate" vs "per remittance": two transfers to two accounts can mean two certificates.</li><li>GST: 18% on top can turn ₹2,999 into ₹3,539.</li><li>Capital gains computation charged separately.</li><li>Rework fees if the bank rejects the pack.</li><li>Courier and notarisation, which should be at cost.</li></ul>
+<h2>Is cheaper riskier?</h2>
+<p>Not if the CA is practising, the UDIN verifies on the ICAI site, and the provider fixes bank queries free. Our price is low because Form 145/146 is all we do, in volume, with checklists for every bank. See our <a href="{pricing}">full pricing</a>.</p>
+"""),
+    dict(slug="tds-on-nri-property-sale", h1="TDS on NRI property sale in 2026: rates, lower TDS and refunds",
+         desc="How much TDS a buyer must deduct when an NRI sells property in India, effective rates with surcharge and cess, how to reduce it with a lower TDS certificate, and getting excess back.",
+         read="9 min", body="""
+<p>When a resident buys property from an NRI, the buyer must deduct tax at source before paying. Unlike a resident seller's flat 1%, the deduction for an NRI seller is on the capital gain at full rates, and in practice many buyers deduct on the entire sale price. On a ₹1 crore sale that can mean ₹13 lakh or more held back.</p>
+<h2>Effective TDS rates for NRI sellers</h2>
+<div class="table-wrap"><table><thead><tr><th>Type of gain</th><th>Sale price up to ₹50 lakh</th><th>₹50 lakh to ₹1 crore</th><th>₹1 crore to ₹2 crore</th></tr></thead><tbody>
+<tr><td>Long-term (held over 24 months), 12.5%</td><td class="num">13.00%</td><td class="num">14.30%</td><td class="num">14.95%</td></tr>
+<tr><td>Short-term (24 months or less), 30% slab</td><td class="num">31.20%</td><td class="num">34.32%</td><td class="num">35.88%</td></tr>
+</tbody></table></div>
+<p class="muted small">Base rate plus surcharge (10% above ₹50 lakh, 15% above ₹1 crore; surcharge on long-term gains is capped at 15%) plus 4% health and education cess. Surcharge bands apply to income; the table uses sale price as a simple guide. For short-term gains above ₹2 crore the surcharge, and so the rate, is higher.</p>
+<h2>What the buyer must do</h2>
+<ul><li>Get a TAN (a PAN is not enough for buying from an NRI).</li><li>Deduct TDS before paying you and deposit it with the government.</li><li>File the quarterly non-resident TDS return and give you a TDS certificate.</li></ul>
+<p>Buyers who don't do this face interest, penalties and disallowance, which is why many deduct on the full price "to be safe".</p>
+<h2>How to reduce the TDS: lower deduction certificate</h2>
+<p>If your actual gain is much smaller than the sale price, apply to the tax officer for a lower or nil deduction certificate before the sale is registered. The officer certifies a rate based on your real gain, and the buyer deducts only that. Read the full process in our <a href="{lower-tds}">lower TDS certificate guide</a>.</p>
+<h2>Already over-deducted? Claim it back</h2>
+<ol><li>Check the TDS appears in your Form 26AS / AIS against your PAN.</li><li>Compute the actual capital gain, with exemptions for reinvestment in a residential house or specified bonds if you used them.</li><li>File your Indian income tax return for that year. The excess is refunded to your Indian bank account, usually within a few months.</li></ol>
+<h2>Then repatriate</h2>
+<p>Once tax is settled, sale proceeds in your NRO account can go abroad up to USD 1 million per financial year with Form 145 and Form 146. See <a href="{property}">repatriating property sale proceeds</a>.</p>
+<p>Our ₹1,499 (incl. GST) property package includes the capital gains computation, Form 146, Form 145 and the bank pack, and flags excess TDS for refund. <a href="{get-started}">Get a free check</a>.</p>
+"""),
+    dict(slug="lower-tds-certificate-nri", h1="Lower TDS certificate for NRIs: cut TDS before you sell",
+         desc="How NRIs apply for a lower or nil TDS deduction certificate (formerly Form 13 / section 197) before selling property or receiving income in India: documents, timeline and savings.",
+         read="7 min", body="""
+<p>A lower deduction certificate is an order from the income tax officer telling the payer (your property buyer, tenant or bank) to deduct tax at a lower rate, or not at all. For NRIs selling property it is the single biggest money-saver, because it stops lakhs being locked up as excess TDS until a refund arrives.</p>
+<div class="note">Under the old Act this was the section 197 certificate, applied for in Form 13. The Income-tax Act, 2025 carried the facility forward with new section and form numbers. The process on the TRACES portal is the same.</div>
+<h2>When it is worth applying</h2>
+<ul><li>Selling property where your real capital gain is much lower than the sale price (high purchase cost, inherited property with a high fair value, reinvestment planned).</li><li>Rental or interest income where a DTAA rate, or your total income, means less tax than the default TDS.</li></ul>
+<h2>How to apply</h2>
+<ol><li>Log in to TRACES with your PAN as a taxpayer.</li><li>Fill the lower deduction application with estimated income for the year, details of the payer (buyer's name, PAN, TAN) and the transaction.</li><li>Upload supporting documents: sale agreement, purchase deed, capital gains computation, cost of improvement proof, last returns.</li><li>The officer may ask questions; reply on the portal.</li><li>The certificate is issued online, naming the buyer and the rate. Give it to the buyer before payment.</li></ol>
+<h2>Timeline</h2>
+<p>The law gives the officer 30 days from a complete application. In practice plan for three to six weeks, and apply as soon as the sale agreement is signed.</p>
+<h2>Documents checklist</h2>
+<ul><li>PAN, passport, overseas address proof</li><li>Draft or signed sale agreement with the buyer's PAN and TAN</li><li>Purchase deed or inheritance papers, and cost of improvements</li><li>Capital gains computation signed by a CA</li><li>Income tax returns for the last three years, if filed</li></ul>
+<h2>Example</h2>
+<p>An NRI sells a flat for ₹1.5 crore bought for ₹1.1 crore in 2016. Without a certificate the buyer may deduct about ₹22 lakh (14.95% of ₹1.5 crore). With a certificate based on the actual gain, deduction may be closer to ₹6 lakh. The ₹16 lakh difference stays with the seller instead of waiting for a refund.</p>
+<p class="muted small">Example for illustration only; your figures depend on dates, costs and exemptions.</p>
+<p>We prepare the application and the computation as part of our property service. <a href="{get-started}">Ask for a quote</a>.</p>
+"""),
+    dict(slug="purpose-codes-for-remittance", h1="RBI purpose codes for outward remittance: which code NRIs should use",
+         desc="What the purpose code on Form A2 is, the codes NRIs and businesses use most often for remittances from India, and how a wrong code gets a transfer held.",
+         read="6 min", body="""
+<p>Every outward remittance from India carries an RBI purpose code: a letter S followed by four digits on Form A2 or your bank's online form. It tells the bank and the RBI why the money is leaving. A code that doesn't match the nature of payment on Form 145 and Form 146 is one of the top reasons banks hold a transfer.</p>
+<h2>Codes NRIs use most often</h2>
+<div class="table-wrap"><table><thead><tr><th>Code</th><th>Used for</th></tr></thead><tbody>
+<tr><td class="num">S1301</td><td>Remittance by non-residents towards family maintenance and savings. Most banks use this for NRO repatriation of savings, interest and rent.</td></tr>
+<tr><td class="num">S1302</td><td>Personal gifts and donations</td></tr>
+<tr><td class="num">S1303</td><td>Donations to religious and charitable institutions abroad</td></tr>
+<tr><td class="num">S1306</td><td>Payment or refund of taxes</td></tr>
+<tr><td class="num">S0305</td><td>Travel for education, including fees and living expenses (residents under LRS)</td></tr>
+</tbody></table></div>
+<p class="muted small">Codes are from the RBI's list of purpose codes for outward remittances. Banks map their own online menus to these codes and occasionally prefer a different code for the same transaction, especially for property sale proceeds and inheritance. Always follow your bank's instruction; we confirm the code with your bank's checklist on every case.</p>
+<h2>Business payments</h2>
+<p>Companies paying foreign vendors use codes from the services groups: software and IT services, consulting, advertising, royalties and licence fees, freight and so on. The code must match the nature of payment certified in Form 146, which also decides the TDS rate and whether DTAA relief applies. Send us the invoice and we tell you the code and tax position.</p>
+<h2>How the code connects to Form 145 and 146</h2>
+<ul><li>Form 146 records the nature of the remittance and the tax treatment.</li><li>Form 145 carries the purpose code and nature from Form 146.</li><li>Form A2 at the bank carries the same code.</li></ul>
+<p>All three must say the same thing. That is the first check we run on every pack.</p>
+"""),
+]
+NEW_SEO = {"nro-to-nre-transfer": "NRO to NRE transfer: limit, documents, Form 145/146 (2026)",
+           "how-to-file-form-145-online": "How to file Form 145 (15CA) online: step by step 2026",
+           "15ca-15cb-charges": "15CA 15CB charges 2026: Form 145/146 fees compared",
+           "tds-on-nri-property-sale": "TDS on NRI property sale 2026: rates and lower TDS",
+           "lower-tds-certificate-nri": "Lower TDS certificate for NRIs (Form 13): how to apply",
+           "purpose-codes-for-remittance": "RBI purpose codes for outward remittance (S1301 etc.)"}
+
+GUIDES = GUIDES + NEW_GUIDES
+
+
+GUIDE_SEO = {**NEW_SEO, '15ca-15cb-replaced-by-form-145-146': '15CA & 15CB are now Form 145 & 146: what changed (2026)', 'how-nris-repatriate-money-from-india': 'How NRIs repatriate money from India (2026 guide)', 'nri-property-sale-repatriation': 'NRI property sale: repatriate sale proceeds from India', 'repatriate-inheritance-nri': 'Inherited money for NRIs: tax and repatriation', 'why-banks-reject-remittances': 'Why banks reject remittances: 7 Form 145/146 mistakes'}
 
 
 def lead_form(L, heading="Get your Form 145 and Form 146", sub="Free check of what your bank needs. A specialist calls or WhatsApps you within one working day.",
@@ -265,7 +407,7 @@ def faq_block(items):
 def cta_band(L, text="Sending money out of India? Start with a free check.", button="Get started"):
     import build as b
     return f"""<section class="band-ink"><div class="wrap" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
-<div><h2 style="margin:0">{text}</h2><p style="margin:.4em 0 0">Free Form 145. Form 146 with full bank paperwork from ₹999. Certificate in 24 to 48 hours.</p></div>
+<div><h2 style="margin:0">{text}</h2><p style="margin:.4em 0 0">Free Form 145. Form 146 with full bank paperwork from ₹999 incl. GST. Certificate in 24 to 48 hours.</p></div>
 <div class="btn-row"><a class="btn btn-primary" href="{L('get-started')}">{button}</a><a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)" href="{b.wa_link()}" target="_blank" rel="noopener">WhatsApp +91 78900 00890</a></div>
 </div></section>"""
 
@@ -294,11 +436,11 @@ def register(b):
 <div>
   <p class="eyebrow">For NRIs and businesses sending money out of India</p>
   <h1>Form 145 &amp; Form 146, done for you<span class="was">The new Form 15CA and 15CB, with your bank paperwork included</span></h1>
-  <p class="lead">Free Form 145 filing. A CA-signed Form 146 certificate with every bank document you need, from ₹999. Your money moves from your NRO account to your account abroad, without a trip to India.</p>
+  <p class="lead">Free Form 145 filing. A CA-signed Form 146 certificate with every bank document you need, from ₹999 incl. GST. Your money moves from your NRO account to your account abroad, without a trip to India.</p>
   <ul class="ticks"><li>Certificate in 24 to 48 hours once documents are in</li><li>Any bank, any amount, any country</li><li>Lowest legal tax: DTAA rates, correct capital gains, excess TDS reclaimed</li></ul>
   <div class="btn-row"><a class="btn btn-primary" href="{L('get-started')}">Get my free check</a><a class="btn btn-ghost" href="{L('talk-to-ca')}">Talk to a CA</a></div>
   {country_picker(L)}
-  <a class="initiative" style="margin-top:18px;display:inline-flex" href="{L('about')}"><span>An initiative of</span>{logo_img(b, 40)}</a>
+  <a class="initiative" style="margin-top:18px;display:inline-flex" href="{L('about')}"><span>An initiative of</span>{logo_img(b, 40, eager=True)}</a>
 </div>
 {cert_mock()}
 </div></section>
@@ -340,7 +482,7 @@ def register(b):
     <p class="eyebrow">Banks</p><h2>We work with every bank</h2>
     <p class="muted">Same forms, different checklists. We keep each bank's current remittance forms and know what its branches ask for.</p>
     <div class="bank-chips">{bank_chips}</div>
-    <p style="margin-top:14px"><a class="btn btn-ghost btn-sm" href="{L('bank-forms')}">Download bank forms for remittance</a></p>
+    <p style="margin-top:14px"><a class="btn btn-ghost btn-sm" href="{L('bank-forms')}">Get bank checklists and forms</a></p>
   </div>
   <div>
     <p class="eyebrow">Countries</p><h2>Send money to wherever you live</h2>
@@ -380,7 +522,7 @@ def register(b):
 <p class="eyebrow">Formerly Form 15CA</p>
 <h1>Form 145: the remittance declaration, filed free</h1>
 <p class="lead">Form 145 is the online declaration the person sending money abroad files on the income tax portal. Since 1 April 2026 it replaces Form 15CA. Banks will not release most taxable remittances without its acknowledgement.</p>
-<div class="btn-row"><a class="btn btn-primary" href="{L('get-started')}">File my Form 145 free</a><a class="btn btn-ghost" href="{L('form-146')}">Do I also need Form 146?</a></div>
+<div class="btn-row"><a class="btn btn-primary" href="{L('get-started')}">File my Form 145 free</a><a class="btn btn-ghost" href="{L('form-146-checker')}">Do I also need Form 146?</a></div>
 </div>{cert_mock()}</div></section>
 <section><div class="wrap article-grid"><div class="prose">
 <h2>Who files Form 145?</h2>
@@ -614,14 +756,17 @@ def register(b):
 
     for g in GUIDES:
         def body(L, g=g):
-            txt = g["body"].replace("{get-started}", L("get-started"))
+            txt = g["body"]
+            for k, v in {"{get-started}": L("get-started"), "{banks}": L("banks"), "{pricing}": L("pricing"), "{lower-tds}": L("guides/lower-tds-certificate-nri"),
+                         "{property}": L("repatriate/property-sale-proceeds"), "{brand}": b.BRAND}.items():
+                txt = txt.replace(k, v)
             others = "".join(f'<li><a href="{L("guides/" + o["slug"])}">{o["h1"]}</a></li>' for o in GUIDES if o["slug"] != g["slug"])[:2000]
             return f"""
 <section><div class="wrap article-grid" style="padding-top:20px"><article class="prose">
 <p class="eyebrow">Guide</p><h1>{g['h1']}</h1>
 <p class="meta">By the {b.BRAND} CA desk · Reviewed {b.REVIEWED} · {g['read']} read</p>
 {txt}
-<div class="callout" style="margin-top:28px"><b>Need this done for you?</b> Form 145 is free and Form 146 with bank paperwork is from ₹999. <a href="{L('get-started')}">Get a free check</a>.</div>
+<div class="callout" style="margin-top:28px"><b>Need this done for you?</b> Form 145 is free and Form 146 with bank paperwork is from ₹999 incl. GST. <a href="{L('get-started')}">Get a free check</a>.</div>
 <h2>More guides</h2><ul>{others}</ul>
 <p class="muted small">General information, not advice for your specific situation. Rules change; we update these guides when they do.</p>
 </article><aside class="sticky-side">{lead_form(L, fid='gd')}</aside></div></section>"""
@@ -661,13 +806,26 @@ def register(b):
 
     # ---------------- Legal ----------------
     legal = {
-        "privacy": ("Privacy policy", f"""<p>{b.BRAND} collects the details you give us (name, contact details, country, purpose and documents) only to prepare your Form 145, Form 146 and bank paperwork and to contact you about your request.</p>
-<h2>How we use your data</h2><ul><li>To assess your case and prepare documents</li><li>To share documents with the Chartered Accountant certifying your case</li><li>To contact you by phone, WhatsApp or email about your request</li></ul>
-<h2>What we never do</h2><ul><li>Sell or rent your data</li><li>Ask for banking passwords or OTPs</li><li>Hold or move your money</li></ul>
-<h2>Storage and retention</h2><p>Lead details are stored in a secured database with access limited to our team. Documents are retained as long as professional and legal record-keeping rules require, then deleted.</p>
-<h2>Your rights</h2><p>Ask us at {b.EMAIL} to see, correct or delete your data, subject to legal retention requirements. This policy follows the Digital Personal Data Protection Act, 2023.</p>"""),
+        "privacy": ("Privacy policy", f"""<p class="muted small">Last updated 27 November 2026.</p>
+<p>This policy explains how {_who(b)} ("we") handles personal data collected through {b.SITE_NAME}, WhatsApp, phone and email. It is written to meet the Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025, and, for visitors in the UK and EU, the UK and EU GDPR.</p>
+<h2>What we collect</h2><ul><li>Details you type into our forms: name, phone/WhatsApp number, email, country of residence, purpose and amount band of the remittance, your bank, and any message.</li><li>Documents you send us for your case: PAN, passport or OCI card, bank statements, sale deeds, wills, tax certificates, Tax Residency Certificate and similar.</li><li>How you reached us: the page you landed on, the referring website and campaign tags (utm codes).</li><li>If you accept analytics cookies: anonymous usage data through Google Analytics and the Meta pixel. We do not load these until you agree.</li></ul>
+<h2>Why we use it (purpose and legal basis)</h2><ul><li>To assess your case, prepare Form 145, Form 146 and bank paperwork, and contact you about it. This is the service you asked for, and you give consent when you submit a form.</li><li>To share documents with the practising Chartered Accountant who certifies your case.</li><li>To meet professional and legal record-keeping duties under Indian tax law.</li><li>To measure which pages and campaigns help people, only with your consent.</li></ul>
+<h2>Who processes data for us</h2><p>We use a small number of service providers, each bound to use the data only for us: Supabase (secure database for enquiries), Zoho Mail (email), WhatsApp Business by Meta (messaging), Cloudflare (website hosting and security), and, with your consent, Google Analytics and Meta. Some of these store data outside India; we use providers with recognised security standards. We never sell or rent your data.</p>
+<h2>What we never do</h2><ul><li>Sell or rent your data, or use it for unrelated marketing</li><li>Ask for internet banking passwords or OTPs</li><li>Hold or move your money</li></ul>
+<h2>How long we keep it</h2><ul><li>Enquiries that do not become cases: deleted within 24 months of the last contact.</li><li>Case documents and certificates: kept for 8 years, the period Indian tax law expects records to be available, then deleted.</li></ul>
+<h2>Your rights</h2><p>You can ask to see, correct, update or erase your data, withdraw consent, or nominate someone to act for you, subject to legal retention duties. Write to <!--email_off-->{b.EMAIL}<!--/email_off-->. We reply within 30 days.</p>
+<h2>Grievance officer</h2><p>{_grievance(b)}. If you are not satisfied with our reply, you can approach the Data Protection Board of India.</p>
+<h2>Cookies</h2><p>The site works without cookies. Analytics and advertising cookies are set only after you click "Accept" on the cookie notice, and you can change your mind by clearing your browser's site data.</p>"""),
         "terms": ("Terms of use", f"""<p>By using {b.SITE_NAME} you agree to these terms.</p><h2>Our service</h2><p>We prepare documentation for outward remittances. Certificates are issued by independent practising Chartered Accountants based on the information and documents you provide. You are responsible for their accuracy and completeness.</p>
-<h2>Fees</h2><p>Fees are as shown on the pricing page or as quoted to you in writing before work starts. Third-party costs are charged at actuals.</p><h2>Limits</h2><p>Your bank decides whether and when to process a remittance. We are not liable for bank delays, exchange rates or decisions of tax authorities.</p><h2>Contact</h2><p>{b.EMAIL}</p>"""),
+<h2>Fees</h2><p>Fees are as shown on the <a href="/pricing/">pricing page</a> (all prices include GST) or as quoted to you in writing before work starts. Third-party costs such as courier, notarisation or apostille are charged at actuals and agreed upfront. Refunds follow our <a href="/refund-policy/">refund and cancellation policy</a>.</p><h2>Limits</h2><p>Your bank decides whether and when to process a remittance. We are not liable for bank delays, exchange rates or decisions of tax authorities.</p><h2>Contact</h2><p>{b.EMAIL}</p>"""),
+        "refund-policy": ("Refund and cancellation policy", f"""<p class="muted small">Last updated 27 November 2026.</p>
+<p>We want you to pay only for work that helps you. This policy applies to fees paid to {_who(b)} for Form 145, Form 146 and remittance paperwork.</p>
+<h2>Before work starts</h2><p>If you cancel before our CA desk starts on your case, we refund 100% of the fee.</p>
+<h2>After work starts, before the certificate is issued</h2><p>If you cancel after we have started reviewing documents or computing tax, but before Form 146 is issued, we refund 50% of the fee.</p>
+<h2>After the certificate is issued</h2><p>Once a Form 146 is issued with a UDIN, the fee is not refundable, because the certificate is generated and recorded with the tax department and ICAI. If your bank raises a query on our certificate, we correct it free of charge.</p>
+<h2>If we cannot help</h2><p>If we find that your case cannot be certified (for example the documents do not support the remittance), we refund the full fee.</p>
+<h2>Third-party costs</h2><p>Courier, notarisation, apostille and government fees already paid on your behalf are not refundable.</p>
+<h2>How refunds are paid</h2><p>Refunds go back to the original payment method within 7 working days of approval. Ask for a refund at <!--email_off-->{b.EMAIL}<!--/email_off--> or on WhatsApp {b.PHONE}.</p>"""),
         "disclaimer": ("Disclaimer", f"""<p>The information on this website is general guidance on Indian tax and foreign exchange rules for remittances, last reviewed {b.REVIEWED}. It is not tax, legal or financial advice for your situation. Laws, rates and bank requirements change. {b.BRAND} is not a bank or an authorised dealer and does not hold, route or convert customer funds. Bank names are used only to describe which bank's paperwork we prepare and do not imply affiliation unless stated.</p>"""),
     }
     for s, (t, body_html) in legal.items():
@@ -676,26 +834,64 @@ def register(b):
 
     register_extra(b)
 
+
+    page(slug="form-146-checker", title="Do I need Form 146? Free 30-second checker | " + b.SITE_NAME,
+         desc="Answer four questions to find out whether your remittance from India needs Form 145, Form 146, both or neither, and what it will cost.",
+         h1="Form 146 checker", priority="0.8", body=lambda L: f"""
+<section class="hero"><div class="wrap article-grid" style="align-items:start"><div class="prose">
+<p class="eyebrow">Free checker</p><h1>Do I need Form 145 or Form 146?</h1>
+<p class="lead">Four questions, 30 seconds. You get the forms your bank will ask for and the price, before you share any details.</p>
+<form class="checker" id="checker" novalidate>
+<fieldset><legend>1. Which account is the money in?</legend>
+<label><input type="radio" name="acct" value="nro" checked> NRO account, or any ordinary Indian savings account</label>
+<label><input type="radio" name="acct" value="nre"> NRE or FCNR account</label>
+<label><input type="radio" name="acct" value="biz"> It's a business paying a foreign vendor</label></fieldset>
+<fieldset><legend>2. Where did the money come from?</legend>
+<label><input type="radio" name="src" value="std" checked> Rent, interest, pension, dividends or savings</label>
+<label><input type="radio" name="src" value="cg"> Sale of property, shares or mutual funds</label>
+<label><input type="radio" name="src" value="inh"> Inheritance</label>
+<label><input type="radio" name="src" value="gift"> A gift from a resident family member's own taxed savings</label></fieldset>
+<fieldset><legend>3. How much will you send this financial year (April to March)?</legend>
+<label><input type="radio" name="amt" value="big" checked> More than ₹5 lakh</label>
+<label><input type="radio" name="amt" value="small"> ₹5 lakh or less</label></fieldset>
+<fieldset><legend>4. Do you have a lower or nil TDS certificate from the tax officer for this money?</legend>
+<label><input type="radio" name="order" value="no" checked> No, or not sure</label>
+<label><input type="radio" name="order" value="yes"> Yes</label></fieldset>
+<button class="btn btn-primary" type="submit">Show my answer</button>
+<div class="checker-result" id="checker-result" role="status" aria-live="polite" hidden></div>
+</form>
+<p class="muted small" style="margin-top:16px">A guide based on the general rules; your bank's checklist can be stricter. We confirm your exact case free before you pay. Prices include GST.</p>
+</div><aside class="sticky-side">{lead_form(L, fid="ck", heading="Prefer a person to check?", sub="A specialist confirms your case on WhatsApp or a call, free.")}</aside></div></section>""")
+
     page(slug="404", noindex=True, title="Page not found | " + b.SITE_NAME, desc="This page has moved. Find Form 145 and Form 146 (formerly 15CA/15CB) help for NRIs on Form145Form146.com.", h1="Not found",
          body=lambda L: f'<section class="hero"><div class="wrap prose"><h1>We could not find that page</h1><p class="lead">It may have moved when 15CA/15CB became Form 145/146.</p><div class="btn-row"><a class="btn btn-primary" href="{L("")}">Go to home</a><a class="btn btn-ghost" href="{L("get-started")}">Get a free check</a></div></div></section>')
+
+
+def _who(b):
+    return (b.LEGAL_ENTITY + f" (operating {b.SITE_NAME} as {b.BRAND})") if b.LEGAL_ENTITY else b.BRAND
+
+
+def _grievance(b):
+    name = b.GRIEVANCE_OFFICER or "Our grievance officer"
+    return f"{_h.escape(name)} can be reached at <!--email_off-->{b.EMAIL}<!--/email_off--> (subject line \"Privacy grievance\") or {b.PHONE}"
 
 
 def price_cards(L):
     return f"""
 <div class="price"><span class="pill pill-accent">Always free</span><h3>Form 145</h3><div class="amt">₹0</div><ul><li>Right part chosen for your case</li><li>Filed with you on the income tax portal</li><li>Acknowledgement ready for your bank</li></ul><a class="btn btn-ghost" href="{L('get-started')}">File free</a></div>
-<div class="price featured"><span class="pill">Most NRIs choose this</span><h3>Form 146 · standard</h3><div class="amt">₹999 <small>per certificate</small></div><ul><li>Rent, NRO balance and FD interest, dividends, gifts</li><li>CA-signed Form 146 with UDIN</li><li>Form 145 filing, Form A2 and bank letter</li><li>DTAA rate applied where you qualify</li><li>Free corrections if the bank asks</li></ul><a class="btn btn-primary" href="{L('get-started')}">Get started</a></div>
-<div class="price"><span class="pill">With tax computation</span><h3>Form 146 · property &amp; capital gains</h3><div class="amt">₹1,499 <small>per certificate</small></div><ul><li>Property sale, inheritance, shares, business payments</li><li>Capital gains or tax computation included</li><li>Everything in standard</li><li>Excess TDS flagged for refund</li></ul><a class="btn btn-ghost" href="{L('get-started')}">Get started</a></div>
-<div class="price"><span class="pill">Through your bank</span><h3>Bank-referred customers</h3><div class="amt">₹499 <small>per certificate</small></div><ul><li>Standard package</li><li>When a partner bank refers you</li><li>Pack formatted to that bank's checklist</li></ul><a class="btn btn-ghost" href="{L('bank-partners')}">For banks</a></div>"""
+<div class="price featured"><span class="pill">Most NRIs choose this</span><h3>Form 146 · standard</h3><div class="amt">₹999 <small>per certificate, incl. GST</small></div><ul><li>Rent, NRO balance and FD interest, dividends, gifts</li><li>CA-signed Form 146 with UDIN</li><li>Form 145 filing, Form A2 and bank letter</li><li>DTAA rate applied where you qualify</li><li>Free corrections if the bank asks</li></ul><a class="btn btn-primary" href="{L('get-started')}">Get started</a></div>
+<div class="price"><span class="pill">With tax computation</span><h3>Form 146 · property &amp; capital gains</h3><div class="amt">₹1,499 <small>per certificate, incl. GST</small></div><ul><li>Property sale, inheritance, shares, business payments</li><li>Capital gains or tax computation included</li><li>Everything in standard</li><li>Excess TDS flagged for refund</li></ul><a class="btn btn-ghost" href="{L('get-started')}">Get started</a></div>
+<div class="price"><span class="pill">Through your bank</span><h3>Bank-referred customers</h3><div class="amt">₹499 <small>per certificate, incl. GST</small></div><ul><li>Standard package</li><li>When a partner bank refers you</li><li>Pack formatted to that bank's checklist</li></ul><a class="btn btn-ghost" href="{L('bank-partners')}">For banks</a></div>"""
 
 
 # ======================= Round 2 additions =======================
 NRIF_LOGO = """<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="var(--brand)" stroke-width="2.5"/><path d="M4 22h36M22 2c6 6 6 34 0 40M22 2c-6 6-6 34 0 40" fill="none" stroke="var(--brand)" stroke-width="1.6"/><circle cx="22" cy="22" r="6" fill="var(--accent)"/></svg>"""
 
 
-def logo_img(b, h=56):
+def logo_img(b, h=56, eager=False):
     src = b.asset("assets/nri-foundation-logo.png", "")
     src2 = b.asset("assets/nri-foundation-logo@2x.png", "")
-    return f'<img class="nrif-logo" src="{src}" srcset="{src2} 2x" alt="{b.BRAND} logo" width="{int(h*320/215)}" height="{h}" loading="lazy">'
+    return f'<img class="nrif-logo" src="{src}" srcset="{src2} 2x" alt="{b.BRAND} logo" width="{int(h*320/215)}" height="{h}" loading="{'eager' if eager else 'lazy'}">'
 
 
 def country_picker(L):
@@ -706,12 +902,12 @@ def country_picker(L):
 <button class="btn btn-primary" type="submit">Start transfer →</button></div><div class="form-msg small" role="status"></div></form>"""
 
 
-QUICK = [("Talk to a CA", "talk-to-ca", "Free 10-minute call with a Chartered Accountant"),
-         ("Request a callback", "talk-to-ca#callback", "We call you at a time that suits your time zone"),
+QUICK = [("Do I need Form 146?", "form-146-checker", "Free 30-second checker with your price"),
+         ("Talk to a CA", "talk-to-ca", "Free 10-minute call with a Chartered Accountant"),
          ("Ask a question", "ask-a-question", "Get a written answer from our CA desk"),
          ("Sample certificate", "downloads#sample", "See what a Form 146 looks like"),
          ("Download RDF", "downloads#rdf", "Remittance Details Form to start your case"),
-         ("Bank forms", "bank-forms", "Remittance forms for 12 banks"),
+         ("Bank forms", "bank-forms", "Checklists and request forms for 12 banks"),
          ("Open NRE / NRO account", "open-nri-account", "Help choosing and opening the right account"),
          ("Best rate in your bank", "bank-rate-assistance", "Ask your own bank for its preferential rate")]
 
@@ -728,7 +924,7 @@ def why_us(b, L):
         ("Largest* Form 145/146 (15CA/15CB) issuer in the world" if full else "Remittance certificates are all we do",
          "Thousands of NRIs and businesses trust us with their remittance paperwork." if full else "Specialists in Form 145/146, so your pack matches what banks ask for the first time."),
         ("Lowest fee in the world*" if full else "Among the lowest fees anywhere",
-         f"Form 145 free, Form 146 from {b.PRICE_STD}. Online CA services we checked in November 2026 charge ₹2,999 to ₹5,000 + GST per remittance."),
+         f"Form 145 free, Form 146 from {b.PRICE_STD}. Our prices include GST. Online CA services we checked in November 2026 charge ₹2,999 to ₹5,000 + GST per remittance."),
         ("Government registered" if full else "Independent practising CAs",
          (("Registered with " + regs + ".") if regs else "Registered with the Income Tax Department, MCA, MSME (Udyam) and DGFT. Every Form 146 is signed by a practising CA with UDIN.") if full else "Every Form 146 is signed by a practising Chartered Accountant with a UDIN you can verify on the ICAI website."),
         ("Any bank, any amount", "From a ₹50,000 rent transfer to crores of sale proceeds, with every Indian bank."),
@@ -801,7 +997,7 @@ def register_extra(b):
 <p class="eyebrow">Download bank forms for remittance</p><h1>Remittance forms for your bank</h1>
 <p class="lead">Every bank has its own outward remittance request, Form A2 format and NRO repatriation letter. Pick your bank and we send you the current set, with a checklist of what to attach.</p>
 <div class="bank-chips">{''.join(f'<a href="{L("banks/" + s)}">{_h.escape(n)}</a>' for s, n in BANKS)}</div>
-</div>{lead_form(L, heading="Get your bank's forms", sub="Instant download where available, otherwise on WhatsApp within one working hour.", purpose="Bank forms download", fid="bf", short=True, download=True, button="Get the forms", extra=bank_sel)}</div></section>
+</div>{lead_form(L, heading="Get your bank's forms", sub="Instant download of your bank's checklist pack. We send the bank's own latest request forms on WhatsApp within one working hour.", purpose="Bank forms download", fid="bf", short=True, download=True, button="Get my bank's pack", extra=bank_sel)}</div></section>
 <section><div class="wrap prose"><h2>Why we send them rather than link them</h2><p>Banks update their forms without notice and branch versions differ. Sending the current set with a checklist saves you a rejected submission.</p></div></section>""", priority="0.8")
 
     page(slug="open-nri-account", title="Open an NRE or NRO account: which one and how | " + b.SITE_NAME,
