@@ -57,8 +57,8 @@ CLAIM_EVIDENCE = "*Based on NRI Foundation records of certificates issued and on
 SOCIAL = {"WhatsApp Channel": "", "YouTube": "https://www.youtube.com/channel/UCxRQ_Kaoi_VoVBwl7cmD1Aw", "Instagram": "https://www.instagram.com/form145form146/", "Facebook": "https://www.facebook.com/profile.php?id=61596844537223", "LinkedIn": "", "X": ""}
 
 # ---- Analytics (leave empty to load nothing) ----
-GA4_ID = ""        # e.g. "G-XXXXXXX"
-META_PIXEL_ID = "" # e.g. "123456789012345"
+GA4_ID = "G-GD9PYV2BN8"   # GA4 property form145form146.com on info@ (27 Nov 2026)
+META_PIXEL_ID = "1623009292409696"  # Meta dataset in "Form 145 & 146" business portfolio (27 Nov 2026)
 
 # ---- Testimonials: add only real clients who agreed to be quoted ----
 TESTIMONIALS = []  # e.g. [("Selling my flat in Pune...", "R. Nair", "Dubai, UAE", "Rental income")]
