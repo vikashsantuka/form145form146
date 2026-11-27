@@ -801,7 +801,7 @@ def register(b):
 <section><div class="wrap prose">
 <h2>What we believe</h2><ul><li>Repatriating your own money legally should be close to free.</li><li>Every NRI deserves the same quality of help, whatever the amount.</li><li>Tax should be the lowest the law allows, never more and never less.</li></ul>
 <h2>How we work</h2><p>Our remittance specialists handle documents and bank checklists. Certificates in Form 146 are issued by independent practising Chartered Accountants with UDIN. We never hold, route or convert your money: your bank sends it directly to your account abroad.</p>
-<h2>Where we are</h2><p>{b.CITY}. Serving NRIs in the USA, UK, Canada, Australia, the Gulf, Singapore, Europe and beyond.</p>
+<h2>Where we are</h2><p><b>Corporate office:</b> {b.STREET_ADDRESS} {b.POSTAL_CODE}<br><b>Registered office:</b> {b.REGISTERED_OFFICE}</p><p>Serving NRIs in the USA, UK, Canada, Australia, the Gulf, Singapore, Europe and beyond.</p>
 </div></section>{why_us(b, L)}{cta_band(L)}""", priority="0.5")
 
     # ---------------- Legal ----------------
@@ -931,7 +931,7 @@ def why_us(b, L):
         ("100% remote documentation", "WhatsApp, email and video call. Door-step pick-up when a bank needs signed originals."),
         ("100% safe and secure", "We never ask for banking passwords or OTPs, and we never hold or move your money."),
         ("Certificate in 24 to 48 hours", "Once documents are complete. Simple cases are often done the same day."),
-        ("Digital, with a real office", f"Online first, with a team you can visit in {b.CITY}."),
+        ("Digital, with a real office", f"Online first, with offices in Bengaluru (Cunningham Road) and Kolkata that you can visit."),
     ]
     cards = "".join(f'<div class="why"><h3>{_h.escape(t)}</h3><p class="muted">{_h.escape(d)}</p></div>' for t, d in items)
     foot = f'<p class="muted small" style="margin-top:12px">{_h.escape(b.CLAIM_EVIDENCE)}</p>' if full and b.CLAIM_EVIDENCE else ""

@@ -24,12 +24,13 @@ def wa_link(text="Hi, I need help with Form 145/146"):
     from urllib.parse import quote as _q
     return f"https://wa.me/{WHATSAPP}?text=" + _q(f"{WA_TAG} {text}", safe="")
 EMAIL = "info@form145form146.com"
-CITY = "Bengaluru, India"   # TODO(Vikash): confirm the office city
+CITY = "Bengaluru, India"
 
 # ---- Trust details (each line shows on the site, in the footer, About page and schema, as soon as it is filled) ----
-LEGAL_ENTITY = ""      # e.g. "NRI Foundation Advisory Pvt Ltd" or "NRI Foundation (LLP)"
-STREET_ADDRESS = ""    # e.g. "3rd Floor, 12 MG Road, Bengaluru 560001"
-POSTAL_CODE = ""
+LEGAL_ENTITY = ""      # firm is "NRI Foundation" (same as BRAND); set a fuller legal name here if it differs, e.g. "NRI Foundation Advisory Pvt Ltd" or "NRI Foundation (LLP)"
+STREET_ADDRESS = "Cunningham Road, Bengaluru"   # corporate office (Vikash, 27 Nov 2026)
+POSTAL_CODE = "560052"
+REGISTERED_OFFICE = "6th Floor, 56E, Hemanta Basu Sarani, Kolkata, West Bengal 700001"
 GSTIN = ""
 CA_PARTNERS = []       # e.g. [("CA Rohit Bajoria", "FCA, ICAI membership no. 123456", "assets/team/rohit.jpg")]
 GOOGLE_REVIEWS_URL = ""  # Google Business Profile review link, once live
@@ -248,7 +249,7 @@ def footer_html(L, A):
         <a class="logo" href="{L('')}">{LOGO_SVG}<span>{SITE_NAME}<small>by {BRAND}</small></span></a>
         <p style="margin:14px 0 0"><img class="nrif-logo" src="{A_LOGO}" srcset="{A_LOGO2} 2x" alt="{BRAND} logo" width="104" height="70" loading="lazy"></p>
         <p class="muted small" style="margin-top:12px">Form 145 and Form 146 (formerly Form 15CA and 15CB) plus bank paperwork for NRIs and businesses sending money out of India. By NRIs, for NRIs.</p>
-        <p class="small">Call or WhatsApp: <a href="tel:{PHONE_TEL}">{PHONE}</a><br>Email: <!--email_off--><a href="mailto:{EMAIL}">{EMAIL}</a><!--/email_off--><br>{html.escape(", ".join(x for x in (STREET_ADDRESS, POSTAL_CODE) if x) or CITY)}</p>
+        <p class="small">Call or WhatsApp: <a href="tel:{PHONE_TEL}">{PHONE}</a><br>Email: <!--email_off--><a href="mailto:{EMAIL}">{EMAIL}</a><!--/email_off--><br>Corporate office: {html.escape(" ".join(x for x in (STREET_ADDRESS, POSTAL_CODE) if x) or CITY)}{('<br>Registered office: ' + html.escape(REGISTERED_OFFICE)) if REGISTERED_OFFICE else ''}</p>
         {trust_lines()}
         {social_html}
       </div>
@@ -308,6 +309,7 @@ def org_schema():
         "url": DOMAIN + "/", "logo": DOMAIN + "/assets/nri-foundation-logo@2x.png", "image": DOMAIN + "/assets/og.png",
         "telephone": PHONE_TEL, "email": EMAIL,
         "address": {k: v for k, v in {"@type": "PostalAddress", "streetAddress": STREET_ADDRESS, "postalCode": POSTAL_CODE, "addressLocality": "Bengaluru", "addressRegion": "Karnataka", "addressCountry": "IN"}.items() if v},
+        **({"location": [{"@type": "Place", "name": "Registered office", "address": {"@type": "PostalAddress", "streetAddress": "6th Floor, 56E, Hemanta Basu Sarani", "addressLocality": "Kolkata", "addressRegion": "West Bengal", "postalCode": "700001", "addressCountry": "IN"}}]} if REGISTERED_OFFICE else {}),
         **({"legalName": LEGAL_ENTITY} if LEGAL_ENTITY else {}),
         "areaServed": ["IN", "US", "GB", "CA", "AU", "AE", "SG", "DE", "NZ"],
         "priceRange": "₹0 – ₹1,499",
