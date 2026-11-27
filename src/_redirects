@@ -1,9 +1,9 @@
 # Same-site redirects (Cloudflare Pages / Netlify). Other domains are redirected at DNS/edge level, see GO-LIVE.md.
-/15ca          /form-145   301
-/15cb          /form-146   301
-/form-15ca     /form-145   301
-/form-15cb     /form-146   301
-/15ca15cb      /15ca-15cb  301
-/blog          /guides     301
-/blog/*        /guides     301
-/contact       /get-started 301
+/15ca          /form-145/ 301
+/15cb          /form-146/ 301
+/form-15ca     /form-145/ 301
+/form-15cb     /form-146/ 301
+/15ca15cb      /15ca-15cb/ 301
+/blog          /guides/ 301
+/blog/*        /guides/ 301
+/contact       /get-started/ 301
