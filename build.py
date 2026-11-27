@@ -39,7 +39,7 @@ REGISTRATIONS = {"Income Tax Dept (PAN/TAN)": "", "MCA (CIN/LLPIN)": "", "MSME (
 CLAIM_EVIDENCE = "*Based on NRI Foundation records of certificates issued and on published fees of other online providers, November 2026. Registration details available on request."  # e.g. "*Based on 12,400 certificates issued in FY 2025-26, audited by ..."
 
 # ---- Social profiles (shown in footer and schema once filled) ----
-SOCIAL = {"WhatsApp Channel": "", "YouTube": "", "Instagram": "", "Facebook": "", "LinkedIn": "", "X": ""}
+SOCIAL = {"WhatsApp Channel": "", "YouTube": "https://www.youtube.com/channel/UCxRQ_Kaoi_VoVBwl7cmD1Aw", "Instagram": "https://www.instagram.com/form145form146/", "Facebook": "https://www.facebook.com/profile.php?id=61596844537223", "LinkedIn": "", "X": ""}
 
 # ---- Analytics (leave empty to load nothing) ----
 GA4_ID = ""        # e.g. "G-XXXXXXX"
