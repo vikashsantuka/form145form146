@@ -263,9 +263,10 @@ def faq_block(items):
 
 
 def cta_band(L, text="Sending money out of India? Start with a free check.", button="Get started"):
+    import build as b
     return f"""<section class="band-ink"><div class="wrap" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
 <div><h2 style="margin:0">{text}</h2><p style="margin:.4em 0 0">Free Form 145. Form 146 with full bank paperwork from ₹999. Certificate in 24 to 48 hours.</p></div>
-<div class="btn-row"><a class="btn btn-primary" href="{L('get-started')}">{button}</a><a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)" href="https://wa.me/917890000890" target="_blank" rel="noopener">WhatsApp +91 78900 00890</a></div>
+<div class="btn-row"><a class="btn btn-primary" href="{L('get-started')}">{button}</a><a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)" href="{b.wa_link()}" target="_blank" rel="noopener">WhatsApp +91 78900 00890</a></div>
 </div></section>"""
 
 
@@ -520,7 +521,7 @@ def register(b):
             pts = "".join(f"<li>{p}</li>" for p in u["points"])
             return f"""
 <section class="hero"><div class="wrap"><p class="eyebrow">Repatriate · {u['short']}</p><h1>{u['title']}</h1><p class="lead prose">{u['intro']}</p>
-<div class="btn-row"><a class="btn btn-primary" href="#lead-{u['slug']}">Get a free check</a><a class="btn btn-ghost" href="https://wa.me/917890000890" target="_blank" rel="noopener">WhatsApp us</a></div></div></section>
+<div class="btn-row"><a class="btn btn-primary" href="#lead-{u['slug']}">Get a free check</a><a class="btn btn-ghost" href="{b.wa_link('Hi, I need Form 146 for ' + u['short'].lower())}" target="_blank" rel="noopener">WhatsApp us</a></div></div></section>
 <section><div class="wrap article-grid"><div class="prose">
 <h2>What we handle</h2><ul>{pts}</ul>
 <h2>The process</h2>
@@ -764,7 +765,7 @@ def register_extra(b):
 <section class="hero"><div class="wrap hero-grid" style="align-items:start"><div>
 <p class="eyebrow">Talk to a CA · Request a callback</p><h1>Speak to a Chartered Accountant, free</h1>
 <p class="lead">A 10-minute call is usually enough to know which forms you need, what tax applies, and what it will cost. No obligation.</p>
-<ul class="ticks"><li>Calls in your time zone, Monday to Saturday</li><li>Questions on Form 145/146, DTAA, capital gains, NRO limits</li><li>Or WhatsApp <a href="https://wa.me/{b.WHATSAPP}" target="_blank" rel="noopener">{b.PHONE}</a> right now</li></ul>
+<ul class="ticks"><li>Calls in your time zone, Monday to Saturday</li><li>Questions on Form 145/146, DTAA, capital gains, NRO limits</li><li>Or WhatsApp <a href="{b.wa_link('Hi, I want to talk to a CA about Form 145/146')}" target="_blank" rel="noopener">{b.PHONE}</a> right now</li></ul>
 </div><div id="callback">{lead_form(L, heading="Request a callback", sub="Tell us when to call. A CA desk member calls you back.", purpose="Talk to a CA / callback", fid="cb", short=True, button="Request my callback", extra=TIME_FIELDS.replace("{fid}", "cb"))}</div></div></section>
 <section><div class="wrap grid g3">
 <div class="card"><h3>Before the call</h3><p class="muted">Keep your bank name, where the money came from and the rough amount handy.</p></div>

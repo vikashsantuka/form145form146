@@ -45,7 +45,7 @@
   });
 
   function waLink(text) {
-    return 'https://wa.me/' + (CFG.whatsapp || '') + '?text=' + encodeURIComponent(text);
+    return 'https://wa.me/' + (CFG.whatsapp || '') + '?text=' + encodeURIComponent('[Form145Form146] ' + text);
   }
 
   document.querySelectorAll('form.lead-form').forEach(function (form) {
@@ -87,7 +87,7 @@
         utm_medium: read('nrif_utm_medium') || null,
         utm_campaign: read('nrif_utm_campaign') || read('nrif_ref') || null
       };
-      var summary = 'Hi NRI Foundation, I need help with Form 145/146.\nName: ' + lead.name +
+      var summary = 'Hi, I need help with Form 145/146.\nName: ' + lead.name +
         (lead.country ? '\nCountry: ' + lead.country : '') +
         (lead.purpose ? '\nPurpose: ' + lead.purpose : '') +
         (lead.amount_band ? '\nAmount: ' + lead.amount_band : '') +
@@ -108,7 +108,7 @@
             var link = lead.bank && files[lead.bank];
             msg.innerHTML = link
               ? 'Thank you. <a href="' + BASE + link + '" target="_blank" rel="noopener"><b>Download the ' + escapeHtml(lead.bank) + ' remittance forms</b></a>. We will also WhatsApp you a filled-in checklist.'
-              : 'Thank you. We will WhatsApp or email you the current ' + escapeHtml(lead.bank || 'bank') + ' remittance forms within one working hour (IST). <a href="' + waLink('Please send me the ' + (lead.bank || '') + ' remittance forms. Name: ' + lead.name) + '" target="_blank" rel="noopener">Get them on WhatsApp now</a>.';
+              : 'Thank you. We will WhatsApp or email you the current ' + escapeHtml(lead.bank || 'bank') + ' remittance forms within one working hour (IST). <a href="' + waLink('Hi, please send me the ' + (lead.bank || '') + ' remittance forms. Name: ' + lead.name) + '" target="_blank" rel="noopener">Get them on WhatsApp now</a>.';
           }
         } else {
           msg.className = 'form-msg err';

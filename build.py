@@ -16,6 +16,13 @@ SITE_NAME = "Form145Form146.com"
 PHONE = "+91 78900 00890"
 PHONE_TEL = "+917890000890"
 WHATSAPP = "917890000890"
+WA_TAG = "[Form145Form146]"  # shared WhatsApp with 360nri: every prefilled message starts with this tag
+
+
+def wa_link(text="Hi, I need help with Form 145/146"):
+    """wa.me link whose prefilled message starts with WA_TAG so the team knows the enquiry is from this site."""
+    from urllib.parse import quote as _q
+    return f"https://wa.me/{WHATSAPP}?text=" + _q(f"{WA_TAG} {text}", safe="")
 EMAIL = "info@form145form146.com"
 CITY = "Bengaluru, India"
 REVIEWED = "November 2026"
@@ -175,7 +182,8 @@ def render(p):
 </header>"""
 
     footer = footer_html(L, A)
-    scripts = f"""<a class="wa-float" href="https://wa.me/{WHATSAPP}?text={'Hi%20NRI%20Foundation%2C%20I%20need%20help%20with%20Form%20145%2F146'}" target="_blank" rel="noopener">WhatsApp us</a>
+    wa_ctx = "Hi, I need help with Form 145/146" if slug == "" else f"Hi, I need help with Form 145/146. Page: {p.get('h1', p['title']) if p.get('crumb') in (None, 'Guide') else p['crumb']}"
+    scripts = f"""<a class="wa-float" href="{html.escape(wa_link(wa_ctx))}" target="_blank" rel="noopener">WhatsApp us</a>
 <script src="{A('assets/config.js')}"></script>
 <script src="{A('assets/app.js')}" defer></script>"""
 
