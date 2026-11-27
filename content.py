@@ -521,7 +521,7 @@ def register(b):
             pts = "".join(f"<li>{p}</li>" for p in u["points"])
             return f"""
 <section class="hero"><div class="wrap"><p class="eyebrow">Repatriate · {u['short']}</p><h1>{u['title']}</h1><p class="lead prose">{u['intro']}</p>
-<div class="btn-row"><a class="btn btn-primary" href="#lead-{u['slug']}">Get a free check</a><a class="btn btn-ghost" href="{b.wa_link('Hi, I need Form 146 for ' + u['short'].lower())}" target="_blank" rel="noopener">WhatsApp us</a></div></div></section>
+<div class="btn-row"><a class="btn btn-primary" href="#lead-{u['slug']}">Get a free check</a><a class="btn btn-ghost" href="{b.wa_link('Hi, I need Form 146 for ' + (u['short'][0].lower() + u['short'][1:] if u['short'][1:2].islower() else u['short']))}" target="_blank" rel="noopener">WhatsApp us</a></div></div></section>
 <section><div class="wrap article-grid"><div class="prose">
 <h2>What we handle</h2><ul>{pts}</ul>
 <h2>The process</h2>
